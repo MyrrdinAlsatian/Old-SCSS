@@ -1,0 +1,27 @@
+
+:root {
+ 
+}
+
+:root[data-theme="dark"] {
+  
+}
+
+html {
+    font-size: 62.5%;
+    /*
+    TODO:
+    font-size par defaut est de 16px (dans la pluspart des navigateurs) donc si taille par defaut(16px) * 62.5% = 10px, 
+    else si taille à été modifié permet de conserver les préférences de l'utilisateurs et changer l'apparence en conséquence
+    */
+}
+
+body {
+    box-sizing: border-box;
+}
+
+main {
+ }
+
+section {
+ }

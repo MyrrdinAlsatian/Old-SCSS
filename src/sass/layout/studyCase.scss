@@ -1,0 +1,31 @@
+.studyCase {
+
+    height: 100vh;
+    display: grid;
+    grid: 
+        "leftSidebar header header" auto
+	"leftSidebar body rightSidebar" 1fr
+	"footer footer footer" auto
+        / 2fr 5fr 3fr;
+    grid-gap: 16px 7.8%;
+    grid-auto-flow: row dense;
+    .header {
+        grid-area: header;
+    }
+    .leftSidebar {
+        grid-area: leftSidebar;
+    }
+    .body {
+        grid-area: body;
+    }
+    .rightSidebar {
+        grid-area: rightSidebar;
+    }
+    .footer {
+        grid-area: footer;
+    }
+    & > div {
+        background: gray;
+    }
+}
+

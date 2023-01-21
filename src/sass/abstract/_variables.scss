@@ -1,0 +1,121 @@
+/*
+Template
+*/
+$prefix: jbs;
+/*
+COLORS:
+*/
+/*
+RGAA grid:
+https://contrast-grid.eightshapes.com/?background-colors=&foreground-colors=%23FFFFFF%2C%20white%0D%0A%23000%2C%20black%0D%0A%232A293C%2C%20primary-400%20text%0D%0A%2311538D%2C%20%2Csecondary-400%20text%0D%0A%23DDDDDD%2C%20gray-200%20text%20decoration%0D%0A%23D4D4D4%2C%20gray-300%20separator%0D%0A%23C4C4C4%2C%20gray-400%20Big%20Title%0D%0A%23808080%2C%20gray-600%20Big%20Title%0D%0A&es-color-form__tile-size=compact
+*/
+/*Basic*/
+$dark-400: hsl(243, 16%, 20%); //#2A293C
+$blue-400: hsl(208, 78%, 31%); //#11538d
+
+$white: hsl(0, 100%, 0%); // #FFF
+$black: hsl(0, 0%, 0%); //#000
+
+$shade-400: hsla(0, 0%, 0%, 0.15);
+$shade-200: hsla(0, 0%, 0%, 0.05);
+
+$gray-600: hsl(0, 0%, 50%); //#808080
+$gray-400: hsl(0, 0%, 77%); //#C4C4C4
+$gray-300: hsl(0, 0%, 83%); //#d4d4d4
+$gray-200: hsl(0, 0%, 87%); //#dddddd
+
+/*Font*/
+@import url("https://fonts.googleapis.com/css2?family=Cabin&family=Raleway&family=Source+Code+Pro&display=swap");
+
+$font-family-heading: "Raleway", sans-serif;
+$font-family-body: "Cabin", sans-serif;
+$font-family-code: "Source Code Pro", monospace;
+
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+$heading-font-size-largest: 9.6rem; //96px
+$heading-font-size-large: 7.2rem; //72px
+$heading-font-size-medium-large: 4.8rem; //48px
+$heading-font-size-medium: 3.6rem; //36px
+$heading-font-size-medium-small: 2.9rem; //29px
+$heading-font-size-small: 2.4rem; //24px
+$heading-font-size-smallest: 1.6rem; //16px
+
+$heading-line-height: 1.174;
+$body-line-height: 1.2;
+$letter-spacing: 0.2rem;
+
+$body-font-size-largest: 2.9rem; //29px
+$body-font-size-large: 2rem; //20px
+$body-font-size-medium: 1.6rem; //16px
+$body-font-size-small: 1.4rem; //14px ?
+
+$spacing-05: 0.5rem;
+$spacing-10: 1rem;
+$spacing-15: 1.5rem;
+$spacing-20: 2rem;
+$spacing-25: 2.5rem;
+$spacing-30: 3rem;
+$spacing-50: 5rem;
+$spacing-100: 10rem;
+
+
+$content-max-width: 986px;
+
+
+$grid-columns: 12;
+$grid-gutter: 16px;
+$grid-margin: 46px;
+
+/// System font stack.
+///
+/// @type List
+///
+/// @example
+///   body {
+///   	font-family: $system-fonts;
+///   }
+$system-fonts: "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica",
+  "Arial", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji" !default;
+
+$system-fonts-mono: "ui-monospace", "SFMono-Regular", "Consolas",
+  "Liberation Mono", "Menlo", "monospace" !default;
+
+
+// Config file and project variables
+// ----------------
+// Breakpoints zone
+// ----------------
+// Warning: you should use your own values, regardless of the devices
+// Best practice is Mobile First: (min-width: $breakpoint)
+$tinny: 480px !default; // or 'em' if you prefer, of course
+$small: 576px !default;
+$medium: 768px !default;
+$large: 992px !default;
+$extra-large: 1200px !default;
+$xextra-large: 1300px !default;
+
+$breakpoints: (
+  tinny: $tinny,
+  
+  small: $small,
+
+  medium: $medium,
+  
+  large: $large,
+
+  huge: $extra-large,
+  
+  xtra: $xextra-large
+  
+);
+
+// z-indexes
+$zindex-navigation: 1000 !default;
+$zindex-dropdown: 2000 !default;
+$zindex-popover: 3000 !default;
+$zindex-tooltip: 4000 !default;
+$zindex-modal: 5000 !default;
+$zindex-notification: 6000 !default;
+$zindex-debug: 7000 !default;

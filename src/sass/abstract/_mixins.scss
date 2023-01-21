@@ -1,0 +1,146 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+
+/* pour pseudo class ::before et ::after*/
+
+@mixin pseudo {
+    content: '';
+    display: block;
+    position: absolute;
+}
+
+
+/* centrer un element*/
+
+@mixin center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+@mixin absCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin size($h, $w) {
+    height: $h;
+    width: $w;
+}
+
+
+/* Font*/
+
+@mixin font-face($style-name, $file, $family, $category:"") {
+    $filepath: "fonts/" + $family + "/" + $file;
+    @font-face {
+        font-family: "#{$style-name}";
+        src: url($filepath + ".eot");
+        src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf") format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg');
+    }
+    // %#{$style-name} {
+    //     font: {
+    //         @if $category !="" {
+    //             family: "#{$style-name}",
+    //             #{$category};
+    //         } @else {
+    //             family: "#{$style-name}";
+    //             weight: normal;
+    //         }
+    //     }
+    // }
+}
+
+
+/* responsive fluid pour les typos*/
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+    & {
+        @each $property in $properties {
+            #{$property}: $min-value;
+        }
+        @media screen and (min-width: $min-vw) {
+            @each $property in $properties {
+                #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+            }
+        }
+        @media screen and (min-width: $max-vw) {
+            @each $property in $properties {
+                #{$property}: $max-value;
+            }
+        }
+    }
+}
+
+
+/* Ajout des préfix pour compatibilité*/
+
+@mixin prefixer($property, $value, $prefixes: webkit moz ms o) {
+    @each $prefix in $prefixes {
+        #{"-" + $prefix + "-" + $property}: $value;
+    }
+    #{$property}: $value;
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+
+/* Média query*/
+
+/// Responsive breakpoint manager
+/// @access public
+/// @param {String} $breakpoint - Breakpoint
+/// @requires $breakpoints
+@mixin respond-to($breakpoint) {
+    $raw-query: map-get($breakpoints, $breakpoint);
+    @if $raw-query {
+        $query: if(type-of($raw-query)=='string', unquote($raw-query), inspect($raw-query));
+        @media screen and #{$query} {
+            @content;
+        }
+    }
+    @else {
+        @error 'No value found for `#{$breakpoint}`. '+'Please make sure it is defined in `$breakpoints` map.';
+    }
+}
+
+
+/* Ajout de (...)*/
+
+@mixin text-shorten {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin backgroundLine($nbrOfLine:12,$gutter:16px, $color: hsla(0,0%,5%,5%)){
+    
+    $half-gutter: #{$gutter};
+    $background: null;
+    --lines:#{$nbrOfLine};
+    --line-gutter: #{$half-gutter};
+    --line-width: 2px;
+@for $i from 1 through $nbrOfLine {
+      $background: $background linear-gradient(90deg, transparent, transparent calc((100% / var(--lines) * #{$i}) - var(--line-gutter)), #{$color} calc(((100% / var(--lines) * #{$i}) - var(--line-gutter)) + var(--line-width)), transparent calc(((100% / var(--lines) * #{$i}) - var(--line-gutter)) + var(--line-width)))#{if($i !=$nbrOfLine, ',', ' ')};
+    }                 
+    background-image: $background;
+
+}
